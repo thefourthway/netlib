@@ -13,6 +13,8 @@ add_library(netlib SHARED
         src/connect_operation.cpp
         include/netlib/recv_operation.h
         src/recv_operation.cpp
+        include/netlib/fdops.h
+        src/fdops.cpp
 )
 
 

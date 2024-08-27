@@ -59,7 +59,7 @@ namespace netlib {
             cqe_index_counter++;
             live_callbacks[bound->operation_id] = create_finalize_function(this, bound);
 
-            io_uring_submit(&ring);
+            ::io_uring_submit(&ring);
         }
 
         void post(const loop_callback_fn& cb) {
@@ -81,10 +81,15 @@ namespace netlib {
 
         io_uring_sqe* sqe(const unsigned int client_id) {
             // see comment about this function under post_raw()
-            io_uring_sqe* res = io_uring_get_sqe(&ring);
+            io_uring_sqe* res = ::io_uring_get_sqe(&ring);
             res->user_data = client_id;
             return res;
         }
+
+        loop(loop const&) = delete;
+        loop(loop const &&) = delete;
+        loop& operator=(loop const&) = delete;
+        loop& operator=(loop const &&) = delete;
 
         io_uring ring;
         io_uring_params params;

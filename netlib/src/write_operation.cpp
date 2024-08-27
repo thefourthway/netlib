@@ -4,7 +4,7 @@ namespace netlib {
     std::errc write_operation::begin(loop &loop, unsigned int idx) const {
         const auto sqe = loop.sqe(idx);
 
-        io_uring_prep_write(sqe, this->fd, this->buffer, this->buffer_size, 0);
+        ::io_uring_prep_write(sqe, this->fd, this->buffer, this->buffer_size, 0);
 
         return std::errc();
     }

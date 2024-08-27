@@ -3,7 +3,7 @@
 namespace netlib {
     std::errc recv_operation::begin(loop &l, unsigned int idx) const {
         const auto sqe = l.sqe(idx);
-        io_uring_prep_recv(sqe, fd, buffer, buffer_size, 0);
+        ::io_uring_prep_recv(sqe, fd, buffer, buffer_size, 0);
         return std::errc();
     }
 

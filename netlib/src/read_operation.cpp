@@ -3,7 +3,7 @@
 namespace netlib {
     std::errc read_operation::begin(loop &l, const unsigned int idx) const {
         const auto sqe = l.sqe(idx);
-        io_uring_prep_read(sqe, fd, buffer, buffer_size, 0);
+        ::io_uring_prep_read(sqe, fd, buffer, buffer_size, 0);
         return std::errc();
     }
 

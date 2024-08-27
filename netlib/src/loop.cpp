@@ -2,12 +2,12 @@
 
 namespace netlib {
     loop::loop() : ring(), params{0}, cqe(nullptr), cqe_index_counter(0) {
-        io_uring_queue_init_params(30, &ring, &params);
+        ::io_uring_queue_init_params(30, &ring, &params);
     }
 
     loop::~loop() {
         cqe = nullptr;
-        io_uring_queue_exit(&ring);
+        ::io_uring_queue_exit(&ring);
     }
 
     void loop::wait() {
@@ -18,7 +18,7 @@ namespace netlib {
                 floating_callbacks.erase(floating_callbacks.begin());
             }
 
-            const int ret = io_uring_peek_cqe(&ring, &cqe);
+            const int ret = ::io_uring_peek_cqe(&ring, &cqe);
 
             if (ret == -EAGAIN) {
                 continue;
@@ -30,12 +30,12 @@ namespace netlib {
 
             if (!cqe) continue;
 
-            if (unsigned int operation_id = cqe->user_data; live_callbacks.find(operation_id) != live_callbacks.end()) {
+            if (live_callbacks.find(cqe->user_data) != live_callbacks.end()) {
                 // exception here = game over. don't do that?
-                live_callbacks[operation_id]();
+                live_callbacks[cqe->user_data]();
             }
 
-            io_uring_cqe_seen(&ring, cqe);
+            ::io_uring_cqe_seen(&ring, cqe);
         }
     }
 }

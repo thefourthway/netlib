@@ -22,7 +22,7 @@ namespace netlib {
 
         std::errc begin(loop &l, unsigned int idx);
 
-        std::errc handle_completion(const io_uring_cqe *cqe, connect_result &res) const;
+        std::errc handle_completion(const io_uring_cqe *cqe, connect_result &res);
     };
 
     void async_connect(loop &l, const std::string &hostname, unsigned short port,
