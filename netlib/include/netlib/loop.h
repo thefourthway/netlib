@@ -10,7 +10,7 @@ namespace netlib {
 
     // bound_operation<Operation> is a struct that stores all of the relevant details for performing the action
     // and returning error codes and result data to the caller. it's first allocated by the loop, and it
-    // is assigned an operation_id before it's downcast to a void() function in
+    // is assigned an operation_id before it's downcast to a void() function in post_raw
     template<typename Operation>
     struct bound_operation {
         using ResultType = typename std::decay_t<Operation>::result_type;
@@ -47,7 +47,7 @@ namespace netlib {
                 cb(setup_result, {});
                 return;
             }
-            
+
             auto bound = new bound_operation<Operation>{
                 idx,
                 std::move(op),
