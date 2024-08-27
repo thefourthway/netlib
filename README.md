@@ -1,6 +1,6 @@
 # netlib
 
-netlib is a toy network library build around io_uring using the proactor pattern
+netlib is a toy network library built around io_uring using the proactor pattern
 
 ## compiling / linking
 
