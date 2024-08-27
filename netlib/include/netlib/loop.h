@@ -47,8 +47,7 @@ namespace netlib {
                 cb(setup_result, {});
                 return;
             }
-
-            // allocat
+            
             auto bound = new bound_operation<Operation>{
                 idx,
                 std::move(op),
