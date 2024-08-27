@@ -69,8 +69,6 @@ namespace netlib {
 
         template<typename T>
         void finalize_operation(bound_operation<T> *op) {
-            // this probably wouldn't have any effect now, but we use post() and provide a void() function
-            // that will allow us
             post([op, this]() {
                 op->callback(op->error, std::move(op->res));
                 if (this->live_callbacks.find(op->operation_id) != this->live_callbacks.end()) {
