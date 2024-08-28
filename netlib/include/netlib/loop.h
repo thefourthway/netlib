@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NETLIB_LOOP_H
+#define NETLIB_LOOP_H
 #include <liburing.h>
 #include <functional>
 #include <iostream>
@@ -108,3 +109,5 @@ namespace netlib {
         };
     }
 }
+
+#endif

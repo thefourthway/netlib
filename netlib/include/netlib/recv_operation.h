@@ -1,4 +1,6 @@
-#pragma once
+#ifndef NETLIB_RECV_OPERATION_H
+#define NETLIB_RECV_OPERATION_H
+
 #include <system_error>
 #include "netlib/loop.h"
 
@@ -27,3 +29,5 @@ namespace netlib {
 
 
 }
+
+#endif

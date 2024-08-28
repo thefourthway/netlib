@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NETLIB_CONNECT_OPERATION_H
+#define NETLIB_CONNECT_OPERATION_H
 
 #include <netinet/in.h>
 #include "netlib/loop.h"
@@ -30,3 +31,5 @@ namespace netlib {
 
 
 }
+
+#endif

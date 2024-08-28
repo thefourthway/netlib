@@ -1,4 +1,6 @@
-#pragma once
+#ifndef NETLIB_WRITE_OPERATION_H
+#define NETLIB_WRITE_OPERATION_H
+
 #include "netlib/loop.h"
 
 namespace netlib {
@@ -24,3 +26,5 @@ namespace netlib {
     void async_write(loop &loop, int fd, char *buffer, int buffer_size,
                      const std::function<void(std::errc, write_operation::result_type &&res)> &cb);
 }
+
+#endif

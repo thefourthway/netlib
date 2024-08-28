@@ -1,4 +1,5 @@
-#pragma once
+#ifndef NETLIB_READ_OPERATION_H
+#define NETLIB_READ_OPERATION_H
 
 #include "netlib/loop.h"
 
@@ -25,3 +26,5 @@ namespace netlib {
     void async_read(loop& loop, int fd, char* buffer, int buffer_size,
         std::function<void(std::errc, read_operation::result_type && res)> cb);
 }
+
+#endif
