@@ -6,6 +6,5 @@
 #include "netlib/read_operation.h"
 #include "netlib/recv_operation.h"
 #include "netlib/write_operation.h"
-#include "netlib/writev_operation.h"
 
 #endif
